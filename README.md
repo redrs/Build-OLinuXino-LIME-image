@@ -1,12 +1,12 @@
 # Build-OLinuXino-LIME-image
 
-This is how to create a lightweight Debian image for the A20-OLINUXINO-LIME board.
+This is how to create a minimal Debian image for the A20-OLINUXINO-LIME board.
 
 ## Setup environment for compiling
 
 First install Debian (7) Wheezy (current stable) system (in VMware Workstation or Virtualbox etc) for building the image.
 
-###### install packages for building
+###### install packages needed for building
 ```
 sudo apt-get update
 sudo apt-get upgrade
@@ -41,11 +41,28 @@ cd u-boot-sunxi/
 make A20-OLinuXino-Lime_config ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
 ```
+You should create these 6 files:
+```
+ls u-boot.bin u-boot-sunxi-with-spl.bin spl/sunxi-spl.bin spl/sunxi-spl.bin  u-boot-sunxi-with-spl.bin u-boot.bin -la
+
+-rw-r--r-- 1 user user  20480 Jan 22 11:54 spl/sunxi-spl.bin
+-rw-r--r-- 1 user user  20480 Jan 22 11:54 spl/sunxi-spl.bin
+-rw-r--r-- 1 user user 233972 Jan 22 11:54 u-boot.bin
+-rw-r--r-- 1 user user 233972 Jan 22 11:54 u-boot.bin
+-rw-r--r-- 1 user user 266804 Jan 22 11:54 u-boot-sunxi-with-spl.bin
+-rw-r--r-- 1 user user 266804 Jan 22 11:54 u-boot-sunxi-with-spl.bin
+
+cd..
+```
 
 #### sunxi tools
+```
+git clone https://github.com/linux-sunxi/sunxi-tools.git
+cd sunxi-tools/
+make
+```
 
-
-## Copy Image to SD card
+# Copy Image to SD card
 
 
 # Using
