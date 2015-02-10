@@ -2,9 +2,9 @@
 
 This is how to create a minimal Debian image for the A20-OLINUXINO-LIME board.
 
-## Setup environment for compiling
-
 First install Debian (7) Wheezy (current stable) system (in VMware Workstation or Virtualbox etc) for building the image.
+
+## Setup environment for compiling
 
 ###### install packages needed for building
 ```
@@ -61,6 +61,31 @@ git clone https://github.com/linux-sunxi/sunxi-tools.git
 cd sunxi-tools/
 make
 ```
+
+```
+wget https://raw.githubusercontent.com/linux-sunxi/sunxi-boards/master/sys_config/a10/a10-olinuxino-lime.fex
+mv a10-olinuxino-lime.fex script.fex
+
+./fex2bin script.fex ~/script.bin
+
+ls -la ~/script.bin
+-rw-r--r-- 1 user user 52624 Jan 22 12:03 /home/user/image/script.bin
+cd ..
+```
+
+####
+```
+git clone https://github.com/linux-sunxi/linux-sunxi
+cd linux-sunxi
+```
+download config file https://drive.google.com/file/d/0B-bAEPML8fwlNzBNN1N2SGpmblk/edit?pli=1 and save as  ~/linux-sunxi/arch/arm/configs/a20_defconfig
+```
+make ARCH=arm a20_defconfig
+make ARCH=arm menuconfig
+
+make -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- uImage CONFIG_DEBUG_SECTION_MISMATCH=y
+```
+
 
 # Copy Image to SD card
 
