@@ -133,12 +133,19 @@ I have no name!@debian:/# dpkg-reconfigure tzdata
 
 I have no name!@debian:/# passwd
 I have no name!@debian:/# adduser user
+
+I have no name!@debian:/# echo debian > /etc/hostname
+
+I have no name!@debian:/# echo 'g_ether' >> /etc/modules
+I have no name!@debian:/# echo 'sunxi_emac' >> /etc/modules
+
+I have no name!@debian:/# echo 'T0:2345:respawn:/sbin/getty -L ttyS0 115200 vt100' >> /etc/inittab
 ```
-Configure the network
+Configure the network:
 ```
 todo
 ```
-Exit and Clean up the chroot
+Exit and Clean up the chroot:
 ```
 I have no name!@debian:/# exit
 sudo rm /home/user/rootfs/etc/resolv.conf
