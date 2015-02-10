@@ -2,9 +2,11 @@
 
 This is how to create a lightweight Debian image for the A20-OLINUXINO-LIME board.
 
-# Setup Building environment
+## Setup Building environment
 
 First install Debian (7) Wheezy (current stable) system (in VMware Workstation or Virtualbox etc) for building the image.
+
+###### install packages for building
 
 sudo apt-get update
 sudo apt-get upgrade
@@ -18,7 +20,7 @@ sudo apt-get install build-essential git debootstrap u-boot-tools ncurses-dev ub
 
 sudo apt-get install gcc-4.7-arm-linux-gnueabihf 
 
-
+###### link to compiler
 
 mkdir ~/bin
 cd ~/bin
@@ -28,6 +30,9 @@ echo "PATH=~/bin:$PATH" >> ~/.bashrc
 cd ..
 
 
+## Create Image
 
-# Create image
+
+## Copy Image to SD card
+
 
