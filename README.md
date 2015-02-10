@@ -88,7 +88,7 @@ make -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- uImage CONFIG_DEBUG_SECTION
 ```
 
 #### Debian rootfs
-create the Debian system that will go on the sdcard
+######create the Debian system that will go on the sdcard
 ```
 mkdir ~/rootfs
 
@@ -96,7 +96,9 @@ sudo debootstrap --arch=armhf --foreign wheezy /home/user/rootfs/
 
 sudo cp /usr/bin/qemu-arm-static /home/user/rootfs/usr/bin/
 sudo cp /etc/resolv.conf /home/user/rootfs/etc
-
+```
+######Chroot into the new system
+```
 sudo chroot /home/user/rootfs/
 
 I have no name!@debian:/# uname -a
@@ -131,10 +133,14 @@ I have no name!@debian:/# dpkg-reconfigure tzdata
 
 I have no name!@debian:/# passwd
 I have no name!@debian:/# adduser user
+```
+Configure the network
+```
+todo
+```
+Exit and Clean up the chroot
+```
 I have no name!@debian:/# exit
-```
-Clean up chroot
-```
 sudo rm /home/user/rootfs/etc/resolv.conf
 sudo rm /home/user/rootfs/usr/bin/qemu-arm-static
 ```
@@ -151,12 +157,12 @@ sudo cp -av /home/user/linux-firmware/rt28* /home/user/rootfs/lib/firmware/
 
 # Copy Image to SD card
 
-######partition
+####partition the card
 
-######copy
+####copy system
 
 # Using
-
+Place the SD card into the A20, hopefully it boots :-)
 
 # Referances
 
